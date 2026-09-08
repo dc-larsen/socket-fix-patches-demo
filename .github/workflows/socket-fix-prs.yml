@@ -1,0 +1,135 @@
+# Socket Fix, opening its own upgrade pull requests.
+#
+# This is the half of remediation that patches cannot do: advisories with no
+# patch available, where the only route is a version upgrade. Socket Fix
+# computes the upgrade set, then opens pull requests so each version change can
+# be reviewed and tested on its own.
+#
+# Run this AFTER the patch workflow. Patches leave versions untouched, so doing
+# them first removes those advisories from the upgrade set and shrinks the number
+# of version changes anyone has to review. See socket-remediate.yml.
+
+name: Socket Fix pull requests
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_limit:
+        description: Maximum number of pull requests to open in one run
+        type: string
+        default: '5'
+      minimum_release_age:
+        description: >-
+          Skip versions published more recently than this (e.g. 7d). Gives the
+          ecosystem time to pull a malicious release before you upgrade into it.
+        type: string
+        default: '7d'
+      allow_major:
+        description: Allow upgrades that require a major version bump
+        type: boolean
+        default: false
+  schedule:
+    # Tuesdays at 06:41 UTC, a day after the patch run.
+    - cron: '41 6 * * 2'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: socket-fix-prs
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      SOCKET_CLI_API_TOKEN: ${{ secrets.SOCKET_CLI_API_TOKEN }}
+
+    steps:
+      - name: Require a Socket token
+        if: env.SOCKET_CLI_API_TOKEN == ''
+        run: |
+          echo "::error::SOCKET_CLI_API_TOKEN is not set. Socket Fix needs an API token with the full-scans:create and packages:list permissions."
+          exit 1
+
+      - uses: actions/checkout@v7
+        with:
+          # Socket Fix creates branches and pushes them itself, so it needs the
+          # credentials checkout leaves in the local git config.
+          persist-credentials: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install the Socket CLI
+        run: |
+          npm install -g socket@1.1.170
+          socket --version
+
+      - name: Run Socket Fix
+        env:
+          # Actions already sets CI=true; Socket Fix reads it to choose between
+          # local mode (edit the working tree) and CI mode (open pull requests).
+          CI: 'true'
+
+          # Prefer a fine-grained PAT over the default GITHUB_TOKEN. Pull
+          # requests opened with GITHUB_TOKEN do not trigger other workflows, so
+          # this repository's own CI never runs on a Socket Fix PR and nothing
+          # proves the upgrade is safe. A PAT with contents: write and
+          # pull-requests: write fixes that.
+          SOCKET_CLI_GITHUB_TOKEN: ${{ secrets.SOCKET_FIX_PAT || secrets.GITHUB_TOKEN }}
+          SOCKET_CLI_GIT_USER_NAME: socket-fix
+          SOCKET_CLI_GIT_USER_EMAIL: socket-fix@users.noreply.github.com
+
+          PR_LIMIT: ${{ inputs.pr_limit || '5' }}
+          MIN_AGE: ${{ inputs.minimum_release_age || '7d' }}
+          ALLOW_MAJOR: ${{ inputs.allow_major || false }}
+        run: |
+          set -o pipefail
+
+          # Build the argument list in shell rather than inside a GitHub
+          # expression, which keeps the quoting readable.
+          args=(
+            --pr-limit "$PR_LIMIT"
+            --minimum-release-age "$MIN_AGE"
+            --output-file socket-fix-applied.json
+          )
+          if [ "$ALLOW_MAJOR" != "true" ]; then
+            args+=(--no-major-updates)
+          fi
+
+          echo "socket fix ${args[*]}"
+          socket fix "${args[@]}" 2>&1 | tee socket-fix.log
+
+      - name: Summarise the run
+        if: always()
+        run: |
+          node scripts/fix-summary.mjs socket-fix-applied.json >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo
+            echo '<details><summary>Run log</summary>'
+            echo
+            echo '```'
+            tail -120 socket-fix.log 2>/dev/null || echo '(no log)'
+            echo '```'
+            echo
+            echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the Socket Fix result
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: socket-fix-result
+          path: |
+            socket-fix-applied.json
+            socket-fix.log
+          if-no-files-found: warn
+          retention-days: 30
