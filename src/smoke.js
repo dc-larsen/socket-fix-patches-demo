@@ -1,6 +1,7 @@
-// Exercises every route so CI can show that the app still behaves identically
-// after Socket Patches rewrites the lockfile. No network egress: the one
-// outbound route is skipped unless SMOKE_ALLOW_NETWORK=1.
+// Exercises every route so CI can show that the app behaves identically after
+// Socket Fix upgrades its dependencies and after Socket Patches repoints the
+// lockfile. No network egress: the one outbound route is skipped unless
+// SMOKE_ALLOW_NETWORK=1.
 'use strict';
 
 const assert = require('node:assert');
@@ -78,10 +79,27 @@ async function check(name, fn) {
     assert.strictEqual(JSON.parse(res.body).decoded.sub, 'demo-user');
   });
 
-  await check('POST /xml parses an XML document', async () => {
+  await check('POST /xml parses an XML document with xml2js', async () => {
     const res = await request('POST', '/xml', { xml: '<root><item>one</item></root>' });
     assert.strictEqual(res.status, 200);
     assert.deepStrictEqual(JSON.parse(res.body).parsed.root.item, ['one']);
+  });
+
+  await check('POST /xml/dom counts elements with xmldom', async () => {
+    const res = await request('POST', '/xml/dom', {
+      xml: '<root><item/><item/><other/></root>',
+      tag: 'item',
+    });
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(JSON.parse(res.body).count, 2);
+  });
+
+  await check('GET /ip classifies an address', async () => {
+    const res = await request('GET', '/ip?address=10.1.2.3');
+    assert.strictEqual(res.status, 200);
+    const body = JSON.parse(res.body);
+    assert.strictEqual(body.private, true);
+    assert.strictEqual(body.public, false);
   });
 
   await check('GET /state serializes server state', async () => {
@@ -101,7 +119,7 @@ async function check(name, fn) {
 
   const failed = checks.filter((c) => !c.ok);
   for (const c of checks) {
-    console.log(`${c.ok ? 'pass' : 'FAIL'}  ${c.name}${c.error ? ` — ${c.error}` : ''}`);
+    console.log(`${c.ok ? 'pass' : 'FAIL'}  ${c.name}${c.error ? ` (${c.error})` : ''}`);
   }
   console.log(`\n${checks.length - failed.length}/${checks.length} checks passed`);
   process.exit(failed.length === 0 ? 0 : 1);
