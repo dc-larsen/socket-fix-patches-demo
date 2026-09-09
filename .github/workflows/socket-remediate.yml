@@ -1,16 +1,27 @@
-# Socket remediation: patch first, then report what still needs an upgrade.
+# Socket remediation: upgrade what is easy, patch the rest.
 #
-# The order is deliberate. A Socket patch leaves the installed version exactly
-# where it is and rewrites the lockfile to pull a fixed build of that same
-# version, so nothing downstream has to be retested. An upgrade changes the
-# version and can change behaviour. So this workflow applies every available
-# patch, proves the app still works, and only then reports the upgrades that are
-# genuinely still required.
+# Two phases on one checkout, ending in one pull request.
 #
-# Runs with no secrets at all: without a token socket-patch uses the public
-# patch proxy, which serves the free-tier patches. Add SOCKET_API_TOKEN to pull
-# your organization's full patch catalogue, and SOCKET_CLI_API_TOKEN to include
-# the Socket Fix upgrade plan in the report.
+#   Phase 1  Socket Fix, restricted to minor and patch upgrades
+#            (--no-major-updates). Same major version, so no API break is
+#            expected, and the dependency moves onto a maintained release.
+#            Runs in local mode so the upgrades land in this working tree
+#            instead of in separate pull requests.
+#
+#   Phase 2  Socket Patches, hosted mode, on whatever is still vulnerable
+#            after phase 1: advisories whose only fix is a major bump,
+#            advisories with no fixed release at all, and advisories the
+#            freshly upgraded version still carries. The installed version does
+#            not change; the lockfile is repointed at a patched build of it.
+#
+# The smoke suite runs three times: before anything, after the upgrades, and
+# after the patches. A failure after the upgrades fails the run. An "easy"
+# upgrade that breaks the app is not easy, and it should not reach a pull
+# request.
+#
+# Secrets are optional. With no SOCKET_CLI_API_TOKEN, phase 1 is skipped and
+# this is a patches-only run. With no SOCKET_API_TOKEN, socket-patch uses the
+# public proxy and free-tier patches only.
 
 name: Socket remediation
 
@@ -18,13 +29,12 @@ on:
   workflow_dispatch:
     inputs:
       open_pr:
-        description: Open a pull request with the patched lockfile
+        description: Open a pull request with the result
         type: boolean
         default: true
   schedule:
-    # Mondays at 06:17 UTC. GitHub disables scheduled workflows after ~60 days
-    # of repository inactivity, so re-enable this from the Actions tab if the
-    # repo goes quiet.
+    # Mondays 06:17 UTC. GitHub disables scheduled workflows after ~60 days of
+    # repository inactivity; re-enable from the Actions tab if it goes quiet.
     - cron: '17 6 * * 1'
 
 permissions:
@@ -38,15 +48,10 @@ concurrency:
 jobs:
   remediate:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     env:
-      # Both optional, and both mapped here rather than on the step that uses
-      # them: the `secrets` context is not available in a step-level `if`, but
-      # `env` is, so this is what lets the Socket Fix step skip itself cleanly
-      # when no token is configured.
-      #
-      # No SOCKET_API_TOKEN      -> public patch proxy, free-tier patches only.
-      # No SOCKET_CLI_API_TOKEN  -> the upgrade plan is omitted from the report.
+      # Mapped at job level because the `secrets` context is not available in a
+      # step-level `if`, but `env` is.
       SOCKET_API_TOKEN: ${{ secrets.SOCKET_API_TOKEN }}
       SOCKET_CLI_API_TOKEN: ${{ secrets.SOCKET_CLI_API_TOKEN }}
 
@@ -58,88 +63,120 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Initialise counters
+        run: |
+          {
+            echo "FIX_UPGRADES=0"
+            echo "FIX_ADVISORIES=0"
+            echo "PATCHES_APPLIED=0"
+          } >> "$GITHUB_ENV"
+
       - name: Install dependencies
         run: npm ci
 
-      # Baseline. If the app is already broken, a later failure tells us nothing
-      # about the patches.
-      - name: Smoke test before patching
+      # Baseline. If the app is already broken, later failures prove nothing.
+      - name: Smoke test before any change
         run: npm run smoke
 
+      # ----------------------------------------------------------------------
+      # Phase 1: upgrade what is easy
+      # ----------------------------------------------------------------------
+      - name: Install the Socket CLI
+        if: env.SOCKET_CLI_API_TOKEN != ''
+        run: |
+          npm install -g socket@1.1.170
+          socket --version
+
+      # Local mode is deliberate. Socket Fix only switches to CI mode (opening
+      # its own pull requests) when ALL FOUR of CI, SOCKET_CLI_GITHUB_TOKEN,
+      # SOCKET_CLI_GIT_USER_NAME and SOCKET_CLI_GIT_USER_EMAIL are set. Actions
+      # sets CI; nothing here sets the other three, so the upgrades land in this
+      # working tree and ship in the single pull request below. The "CI mode
+      # detected, but pull request creation is disabled" notice it prints is
+      # expected.
+      #
+      # --no-major-updates is what "easy" means here. --minimum-release-age
+      # skips versions younger than a week, so a malicious release has time to
+      # be pulled before this upgrades into it.
+      - name: "Phase 1: upgrade what is easy (Socket Fix, minor and patch only)"
+        id: fix
+        if: env.SOCKET_CLI_API_TOKEN != ''
+        continue-on-error: true
+        run: |
+          socket fix \
+            --all \
+            --no-major-updates \
+            --minimum-release-age 7d \
+            --output-file socket-fix-applied.json
+
+      # Socket Fix installs its analysis engine (@coana-tech/cli) through the
+      # Socket-wrapped package manager, so that install is itself policy
+      # evaluated. In an organization whose policy action for
+      # `recentlyPublished` is `error`, the engine is blocked and phase 1 fails
+      # before computing anything. Revert any partial edit so phase 2 runs on
+      # the original tree. The lasting fix is a package-scoped policy exception
+      # for @coana-tech/cli.
+      - name: Undo phase 1 if it failed
+        if: steps.fix.outcome == 'failure'
+        run: |
+          echo "::warning::Socket Fix failed, so this run is patches-only. If the log shows @coana-tech/cli blocked on recentlyPublished, add a policy exception for that package."
+          git checkout -- package.json package-lock.json
+          rm -f socket-fix-applied.json
+
+      - name: Record phase 1 results
+        if: steps.fix.outcome == 'success'
+        run: |
+          python3 - <<'PY' >> "$GITHUB_ENV"
+          import json
+          d = json.load(open('socket-fix-applied.json'))
+          fixes = d.get('fixes') or {}
+          packages = {u['purl'].rsplit('@', 1)[0] for ups in fixes.values() for u in ups}
+          print(f"FIX_ADVISORIES={len(fixes)}")
+          print(f"FIX_UPGRADES={len(packages)}")
+          PY
+
+      - name: Install the upgraded dependencies
+        run: npm ci
+
+      # The gate that matters most. Fails the run if an upgrade broke the app.
+      - name: Smoke test after upgrades
+        run: npm run smoke
+
+      # ----------------------------------------------------------------------
+      # Phase 2: patch the rest
+      # ----------------------------------------------------------------------
       - name: Install socket-patch
         run: |
           curl -fsSL https://install.socket.dev/patch \
             | SOCKET_PATCH_INSTALL_DIR="$HOME/.local/bin" sh
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
-      - name: Show socket-patch version
-        run: socket-patch --version
-
-      # Read-only. Lists what is available without touching the tree, which is
-      # what the report is built from. `scan --json` on its own never mutates;
-      # a --mode flag is what makes it apply anything.
-      - name: Inventory available patches
-        run: socket-patch scan --json > socket-patch-inventory.json
-
-      - name: Summarise inventory
+      # Hosted mode rewrites only `resolved` and `integrity` in the lockfile so
+      # the still-vulnerable packages install from Socket's patch server. The
+      # version field does not move. `scan --json` without a --mode flag would
+      # be read-only; the flag is what applies.
+      - name: "Phase 2: patch the rest (Socket Patches, hosted mode)"
         run: |
-          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-          import json
-          d = json.load(open('socket-patch-inventory.json'))
-          print('## Socket Patches inventory\n')
-          print(f"- packages scanned: **{d.get('scannedPackages', 0)}**")
-          print(f"- packages with patches available: **{d.get('packagesWithPatches', 0)}**")
-          print(f"- patches: **{d.get('totalPatches', 0)}** "
-                f"({d.get('freePatches', 0)} free, {d.get('paidPatches', 0)} org-tier)")
-          if not d.get('canAccessPaidPatches', False):
-              print('\n> No API token, so only free-tier patches are listed. '
-                    'Set the `SOCKET_API_TOKEN` secret for the full catalogue.')
-          PY
-
-      # Hosted mode: rewrites `resolved` + `integrity` in the lockfile to point
-      # at Socket's patch server. The dependency version is unchanged and no
-      # patch bytes are committed, so the diff stays a couple of lines per
-      # package. The alternatives are `--mode vendored` (commits the patched
-      # artifacts for hermetic/offline installs) and `--mode agent` (re-applies
-      # patches at install time via a postinstall hook).
-      - name: Apply patches (hosted mode)
-        run: |
+          socket-patch --version
           socket-patch scan --mode hosted --json --yes > socket-patch-applied.json
           python3 - <<'PY' >> "$GITHUB_ENV"
           import json
           d = json.load(open('socket-patch-applied.json'))
-          r = d.get('redirect') or {}
-          print(f"PATCHES_APPLIED={r.get('redirected', 0)}")
+          print(f"PATCHES_APPLIED={(d.get('redirect') or {}).get('redirected', 0)}")
           PY
 
-      - name: Show lockfile diff
-        run: |
-          echo "Patched packages: ${PATCHES_APPLIED:-0}"
-          git --no-pager diff --stat
-          {
-            echo '## Lockfile changes'
-            echo
-            echo '```diff'
-            git --no-pager diff -- package-lock.json | head -80
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      # Installs the patched tarballs. The lockfile stays in sync with
-      # package.json because no version changed, so `npm ci` is still valid.
-      - name: Reinstall from the patched lockfile
+      - name: Install the patched dependencies
         if: env.PATCHES_APPLIED != '0'
         run: npm ci
 
-      # The load-bearing check: same app, same versions, no behaviour change.
-      - name: Smoke test after patching
+      - name: Smoke test after patches
         if: env.PATCHES_APPLIED != '0'
         run: npm run smoke
 
-      # OpenVEX 0.2.0. Each statement is `not_affected` with the justification
-      # `inline_mitigations_already_exist`, which is how a scanner that consumes
-      # VEX learns the advisory is mitigated even though the version still looks
-      # vulnerable. Generated after the reinstall so it can hash the files on
-      # disk rather than trusting the manifest.
+      # OpenVEX 0.2.0. Each statement is `not_affected` with justification
+      # `inline_mitigations_already_exist`: the advisory is mitigated even
+      # though the version string still looks vulnerable. Generated after the
+      # reinstall so it hashes the files on disk.
       - name: Generate OpenVEX attestation
         if: env.PATCHES_APPLIED != '0'
         run: socket-patch vex --output socket-patches.openvex.json
@@ -151,66 +188,51 @@ jobs:
           VEX_PATH: socket-patches.openvex.json
 
       # ----------------------------------------------------------------------
-      # Socket Fix, in report-only mode. No GitHub token is passed to this step,
-      # so it cannot open pull requests; --no-apply-fixes keeps the tree clean.
-      # The upgrade PRs are the separate socket-fix-prs.yml workflow.
+      # Report
       # ----------------------------------------------------------------------
-      - name: Compute the remaining upgrade plan
-        id: fixplan
-        if: env.SOCKET_CLI_API_TOKEN != ''
-        # Socket Fix installs its analysis engine (@coana-tech/cli) through the
-        # Socket-wrapped package manager, so the engine install is itself
-        # policy-evaluated. In an organization whose policy action for
-        # `recentlyPublished` is `error`, that install is blocked and this step
-        # fails. The patch work above is already done by then, so the failure is
-        # tolerated and costs only the upgrade half of the report. Fix it
-        # properly with a package-scoped policy exception for @coana-tech/cli.
-        continue-on-error: true
-        run: |
-          npm install -g socket@1.1.170
-          socket fix \
-            --no-apply-fixes \
-            --no-major-updates \
-            --output-file socket-fix-plan.json
-          echo "have_plan=true" >> "$GITHUB_OUTPUT"
-
       - name: Build the remediation report
         run: |
-          if [ -f socket-fix-plan.json ]; then
-            node scripts/remediation-plan.mjs \
-              socket-patch-inventory.json socket-fix-plan.json > remediation-plan.md
-          else
-            node scripts/remediation-plan.mjs socket-patch-inventory.json > remediation-plan.md
-          fi
-          cat remediation-plan.md >> "$GITHUB_STEP_SUMMARY"
+          node scripts/remediation-plan.mjs socket-fix-applied.json socket-patch-applied.json \
+            > remediation-plan.md
+          {
+            cat remediation-plan.md
+            echo
+            echo '## Files changed'
+            echo
+            echo '```'
+            git --no-pager diff --stat
+            echo '```'
+            echo
+            echo '<details><summary>package.json diff</summary>'
+            echo
+            echo '```diff'
+            git --no-pager diff -- package.json
+            echo '```'
+            echo
+            echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload evidence
         uses: actions/upload-artifact@v7
         with:
           name: socket-remediation-evidence
           path: |
-            socket-patch-inventory.json
+            socket-fix-applied.json
             socket-patch-applied.json
             socket-patches.openvex.json
-            socket-fix-plan.json
             remediation-plan.md
           if-no-files-found: warn
           retention-days: 30
 
       - name: Assemble the pull request body
-        if: env.PATCHES_APPLIED != '0'
+        if: env.FIX_UPGRADES != '0' || env.PATCHES_APPLIED != '0'
         run: |
           {
-            echo "Applied **${PATCHES_APPLIED}** Socket patch(es) in hosted mode."
+            echo "**Phase 1** upgraded **${FIX_UPGRADES}** package(s), closing **${FIX_ADVISORIES}** advisories. Minor and patch bumps only."
             echo
-            echo "Every dependency version in this diff is **unchanged**. Only \`resolved\`"
-            echo "and \`integrity\` move, from the public registry to Socket's patch server,"
-            echo "so the install pulls a fixed build of the same version. The app's smoke"
-            echo "tests ran before and after and produced identical results."
+            echo "**Phase 2** patched **${PATCHES_APPLIED}** package(s) that were still vulnerable after phase 1. Their versions are unchanged: \`resolved\` and \`integrity\` now point at Socket's patch server, and \`socket-patches.openvex.json\` attests to what was mitigated."
             echo
-            echo "\`socket-patches.openvex.json\` is an OpenVEX 0.2.0 attestation covering"
-            echo "these advisories. Point a VEX-aware scanner at it so the patched packages"
-            echo "stop being reported as vulnerable."
+            echo "The smoke suite passed before, between, and after the two phases."
             echo
             cat remediation-plan.md
             echo
@@ -219,30 +241,26 @@ jobs:
           } > pr-body.md
           cat pr-body.md
 
+      # Everything not gitignored is committed: package.json,
+      # package-lock.json, .socket/vendor/redirect-state.json (the file
+      # `socket-patch vex` reads, so the attestation is reproducible from a
+      # clone) and the OpenVEX document. Run outputs are gitignored.
       - name: Open a pull request
         if: >-
-          env.PATCHES_APPLIED != '0' &&
+          (env.FIX_UPGRADES != '0' || env.PATCHES_APPLIED != '0') &&
           (github.event_name == 'schedule' || inputs.open_pr)
         uses: peter-evans/create-pull-request@v8
         with:
-          branch: socket/patches
+          branch: socket/remediation
           base: ${{ github.ref_name }}
-          title: "Socket Patches: fix ${{ env.PATCHES_APPLIED }} package(s) without upgrading"
+          title: "Socket remediation: ${{ env.FIX_UPGRADES }} upgrade(s), ${{ env.PATCHES_APPLIED }} patch(es)"
           body-path: pr-body.md
           commit-message: |
-            Apply Socket patches in hosted mode
+            Socket remediation: upgrade what is easy, patch the rest
 
-            Repoints ${{ env.PATCHES_APPLIED }} lockfile entries at Socket's patch
-            server. No dependency version changes.
-          # .socket/vendor/redirect-state.json holds the original lockfile
-          # fragments and is what `socket-patch vex` reads. Committing it keeps
-          # the attestation reproducible from a fresh clone and leaves
-          # `socket-patch vendor --revert` able to undo the change. Drop it from
-          # the add list if you would rather keep the diff to the lockfile alone
-          # and treat the VEX document as a build artifact.
-          add-paths: |
-            package-lock.json
-            .socket/**
-            socket-patches.openvex.json
+            Phase 1 (Socket Fix, minor and patch only): ${{ env.FIX_UPGRADES }}
+            package(s) upgraded, covering ${{ env.FIX_ADVISORIES }} advisories.
+            Phase 2 (Socket Patches, hosted): ${{ env.PATCHES_APPLIED }} package(s)
+            repointed at the patch server, versions unchanged.
           delete-branch: true
-          labels: socket-patches
+          labels: socket-remediation

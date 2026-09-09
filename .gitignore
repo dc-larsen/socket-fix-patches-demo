@@ -1,20 +1,18 @@
 node_modules/
 
 # Workflow outputs. These are uploaded as run artifacts rather than committed.
-socket-patch-inventory.json
-socket-patch-applied.json
-socket-fix-plan.json
-socket-fix-applied.json
+socket-fix-*.json
 socket-fix.log
+socket-patch-*.json
 remediation-plan.md
 pr-body.md
 
 # Lock held while patches are being applied.
 .socket/apply.lock
 
-# Note: .socket/vendor/redirect-state.json is deliberately NOT ignored. It
-# records the original lockfile values and is the file `socket-patch vex` reads
-# to build the attestation, so the patch workflow commits it.
+# Note: socket-patches.openvex.json and .socket/vendor/redirect-state.json are
+# deliberately NOT ignored. The state file records the original lockfile values
+# and is what `socket-patch vex` reads, so the workflow commits both.
 
 .DS_Store
 *.tgz

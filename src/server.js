@@ -1,12 +1,18 @@
 // Minimal Express app whose dependencies are intentionally pinned to vulnerable
 // versions. The point is that these packages are actually imported and called,
 // so a scan sees real usage rather than an unused dependency list.
+//
+// The dependency set is chosen so both remediation phases have work to do.
+// Most packages have a minor or patch upgrade available, which Socket Fix
+// takes. A few have no upgrade short of a major bump, or no upgrade at all
+// (xmldom, ip, serialize-javascript, tar), and only a Socket patch closes them.
 'use strict';
 
 const express = require('express');
 const axios = require('axios');
 const braces = require('braces');
 const handlebars = require('handlebars');
+const ip = require('ip');
 const JSON5 = require('json5');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
@@ -14,6 +20,7 @@ const minimist = require('minimist');
 const semver = require('semver');
 const serialize = require('serialize-javascript');
 const xml2js = require('xml2js');
+const { DOMParser } = require('xmldom');
 const { CookieJar } = require('tough-cookie');
 
 const app = express();
@@ -56,7 +63,7 @@ app.get('/token', (req, res) => {
   res.json({ token, decoded: jwt.verify(token, SECRET) });
 });
 
-// xml2js: parse an XML payload
+// xml2js: parse an XML payload into plain objects
 app.post('/xml', async (req, res) => {
   try {
     const parsed = await xml2js.parseStringPromise(String(req.body.xml || '<root/>'));
@@ -64,6 +71,20 @@ app.post('/xml', async (req, res) => {
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
+});
+
+// xmldom: DOM-style XML parsing, counting elements with a given tag name
+app.post('/xml/dom', (req, res) => {
+  const xml = String(req.body.xml || '<root/>');
+  const tag = String(req.body.tag || 'item');
+  const doc = new DOMParser({ errorHandler: () => {} }).parseFromString(xml, 'text/xml');
+  res.json({ tag, count: doc.getElementsByTagName(tag).length });
+});
+
+// ip: classify an address as private or public
+app.get('/ip', (req, res) => {
+  const address = String(req.query.address || req.ip || '127.0.0.1');
+  res.json({ address, private: ip.isPrivate(address), public: ip.isPublic(address) });
 });
 
 // serialize-javascript: embed server state into a page

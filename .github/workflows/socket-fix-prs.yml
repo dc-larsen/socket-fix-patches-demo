@@ -1,13 +1,14 @@
-# Socket Fix, opening its own upgrade pull requests.
+# Socket Fix, opening one pull request per upgrade.
 #
-# This is the half of remediation that patches cannot do: advisories with no
-# patch available, where the only route is a version upgrade. Socket Fix
-# computes the upgrade set, then opens pull requests so each version change can
-# be reviewed and tested on its own.
+# The alternative to phase 1 of socket-remediate.yml. That workflow runs
+# Socket Fix in local mode and folds the upgrades into a single combined pull
+# request. This one runs it in CI mode so Socket Fix opens its own pull
+# requests, one per fix, for teams that want every version change reviewed and
+# tested on its own.
 #
-# Run this AFTER the patch workflow. Patches leave versions untouched, so doing
-# them first removes those advisories from the upgrade set and shrinks the number
-# of version changes anyone has to review. See socket-remediate.yml.
+# Same definition of "easy" as the combined workflow: minor and patch upgrades
+# only, and nothing published in the last week. Patches for whatever is left
+# still come from socket-remediate.yml.
 
 name: Socket Fix pull requests
 
@@ -29,7 +30,7 @@ on:
         type: boolean
         default: false
   schedule:
-    # Tuesdays at 06:41 UTC, a day after the patch run.
+    # Tuesdays at 06:41 UTC.
     - cron: '41 6 * * 2'
 
 permissions:
@@ -75,8 +76,9 @@ jobs:
 
       - name: Run Socket Fix
         env:
-          # Actions already sets CI=true; Socket Fix reads it to choose between
-          # local mode (edit the working tree) and CI mode (open pull requests).
+          # CI mode needs all four of these. Actions sets CI already; the other
+          # three are what flip Socket Fix from editing the working tree to
+          # opening pull requests.
           CI: 'true'
 
           # Prefer a fine-grained PAT over the default GITHUB_TOKEN. Pull
