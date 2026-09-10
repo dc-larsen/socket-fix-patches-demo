@@ -30,7 +30,8 @@ Measured with `socket` CLI 1.1.170 and `socket-patch` 4.0.0:
 | --- | --- | --- |
 | Phase 1 upgraded | **19** | **63** |
 | Phase 2 patched | **5** | **6** |
-| Smoke suite, before / between / after | 9/9 | 9/9 | 9/9 |
+
+The smoke suite passed 9/9 at all three checkpoints: before anything, after the upgrades, after the patches.
 
 The five that reached phase 2 show the three reasons a patch is the only move:
 
@@ -224,6 +225,19 @@ Found while building and testing this repo:
   marks phase 1 `continue-on-error`, reverts any partial edit, and carries on
   with patches. The lasting fix is a package-scoped policy exception for
   `@coana-tech/cli`.
+- **The repo has to let Actions open pull requests.** Settings → Actions → General →
+  "Allow GitHub Actions to create and approve pull requests" must be on, with
+  workflow permissions at read and write. It is off by default on a new repo and
+  some organizations disable it by policy; without it the last step fails with
+  "GitHub Actions is not permitted to create or approve pull requests".
+  `peter-evans/create-pull-request` is the only third-party action here, so
+  allow-list it if your organization restricts marketplace actions.
+- **Token scopes.** `SOCKET_CLI_API_TOKEN` needs `full-scans:create` and
+  `packages:list` (from `socket fix --help`). Creating the `recentlyPublished`
+  exception through the triage API needs `triage:alerts-update`.
+- **Runners need egress to `patch.socket.dev`** in hosted mode, because
+  `npm ci` fetches the patched tarballs from there. If CI egress is locked down,
+  use `--mode vendored` and commit the artifacts instead.
 - **`secrets` is not available in a step-level `if`.** Map the secret to a
   job-level `env` and test `env.NAME != ''`.
 - **Pull requests opened with the default `GITHUB_TOKEN` do not trigger other
