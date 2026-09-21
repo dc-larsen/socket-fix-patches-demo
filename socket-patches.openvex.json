@@ -1,0 +1,95 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "urn:uuid:cc49e7d5-3def-40a6-8449-7ff591fcf5fa",
+  "author": "Socket",
+  "timestamp": "2026-09-21T12:45:49Z",
+  "version": 1,
+  "tooling": "socket-patch 4.0.0",
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "GHSA-2p57-rm9w-gvfp",
+        "aliases": [
+          "CVE-2024-29415"
+        ]
+      },
+      "timestamp": "2026-09-21T12:45:49Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/ip@2.0.1"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch fb5ddc16-0ee0-4cc9-b2cd-0b81ccdad4fb (redirected)"
+    },
+    {
+      "vulnerability": {
+        "name": "GHSA-5c6j-r48x-rmvq"
+      },
+      "timestamp": "2026-09-21T12:45:49Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/serialize-javascript@3.1.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch 7bf4a41e-30eb-466f-a51b-b82edd1202ac (redirected)"
+    },
+    {
+      "vulnerability": {
+        "name": "GHSA-crh6-fp67-6883",
+        "aliases": [
+          "CVE-2022-39353"
+        ]
+      },
+      "timestamp": "2026-09-21T12:45:49Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/xmldom@0.6.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch 4bada17e-58e6-41ed-9a76-5d4de89323a1 (redirected)"
+    },
+    {
+      "vulnerability": {
+        "name": "GHSA-r6q2-hw4h-h46w",
+        "aliases": [
+          "CVE-2026-23950"
+        ]
+      },
+      "timestamp": "2026-09-21T12:45:49Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/tar@6.1.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch 167721b8-d8ed-4469-b0cf-f343d73199aa (redirected)"
+    }
+  ]
+}
