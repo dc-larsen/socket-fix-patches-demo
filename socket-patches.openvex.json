@@ -1,0 +1,95 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "urn:uuid:0cd8d3b1-f715-4f8f-81b3-b155f974ab2c",
+  "author": "Socket",
+  "timestamp": "2026-10-05T14:33:58Z",
+  "version": 1,
+  "tooling": "socket-patch 4.0.0",
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "GHSA-2p57-rm9w-gvfp",
+        "aliases": [
+          "CVE-2024-29415"
+        ]
+      },
+      "timestamp": "2026-10-05T14:33:58Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/ip@2.0.1"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch fb5ddc16-0ee0-4cc9-b2cd-0b81ccdad4fb (redirected)"
+    },
+    {
+      "vulnerability": {
+        "name": "GHSA-5c6j-r48x-rmvq"
+      },
+      "timestamp": "2026-10-05T14:33:58Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/serialize-javascript@3.1.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch 7bf4a41e-30eb-466f-a51b-b82edd1202ac (redirected)"
+    },
+    {
+      "vulnerability": {
+        "name": "GHSA-crh6-fp67-6883",
+        "aliases": [
+          "CVE-2022-39353"
+        ]
+      },
+      "timestamp": "2026-10-05T14:33:58Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/xmldom@0.6.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch 4bada17e-58e6-41ed-9a76-5d4de89323a1 (redirected)"
+    },
+    {
+      "vulnerability": {
+        "name": "GHSA-jr5f-v2jv-69x6",
+        "aliases": [
+          "CVE-2025-27152"
+        ]
+      },
+      "timestamp": "2026-10-05T14:33:58Z",
+      "products": [
+        {
+          "@id": "pkg:github/dc-larsen/socket-fix-patches-demo",
+          "subcomponents": [
+            {
+              "@id": "pkg:npm/axios@0.21.2"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "inline_mitigations_already_exist",
+      "impact_statement": "Patched via Socket patch 05504751-f47a-45d6-bf4e-6602c40c9af4 (redirected)"
+    }
+  ]
+}
